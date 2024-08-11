@@ -46,7 +46,7 @@ const Navbar = () => {
               <FaCartPlus className="mr-1" />
             </button>
             <button className="hover:text-gray-300 flex items-center">
-              <FaUser className="mr-1" />
+              <FaUser className="mr-1 hidden md:flex" />
             </button>
             <button className="hover:text-gray-300 items-center hidden md:flex">
               ENG

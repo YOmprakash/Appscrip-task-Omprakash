@@ -97,13 +97,16 @@ const Products = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center mx-11">
-      <div className="flex items-center justify-between border-t border-b border-solid border-gray-300 py-8 my-4">
-        <div className="flex items-center gap-8">
-          <p className="text-[#252020] font-bold font-[Inter]">
+    <div className="flex flex-col justify-center mx-4 md:mx-11">
+      <div className="flex flex-col md:flex-row items-center justify-between border-t border-b border-solid border-gray-300 py-2 md:py-8 md:my-4">
+        <div className="flex items-center gap-8 mb-4 md:mb-0">
+          <p className="text-[#252020] font-bold font-[Inter] hidden md:block">
             {filteredProducts.length} Items
           </p>
-          <div onClick={toggleFilters} className="flex items-center cursor-pointer">
+          <div
+            onClick={toggleFilters}
+            className="md:flex items-center hidden cursor-pointer"
+          >
             <FaLessThan
               className={`text-[#888792] text-[10px] transition-transform ${
                 filtersVisible ? '' : 'rotate-90'
@@ -125,27 +128,38 @@ const Products = () => {
             </p>
           </div>
         </div>
-        <div>
+        <div className="flex items-center justify-between">
+          <button
+            onClick={toggleFilters}
+            className="outline-none rounded-lg py-2 px-4 font-bold flex md:hidden"
+          >
+            {filtersVisible ? 'Hide Filters' : 'Show Filters'}
+          </button>
           <select
             className="outline-none rounded-lg py-2 px-4 font-bold"
             value={dropdownValue}
             onChange={handleDropdownChange}
           >
             {dropDownOptions.map((option) => (
-              <option className="text-[#252020]" key={option.value} value={option.value}>
+              <option
+                className="text-[#252020]"
+                key={option.value}
+                value={option.value}
+              >
                 {option.label}
               </option>
             ))}
           </select>
         </div>
       </div>
-      <div className="flex justify-center">
+
+      <div className="flex flex-col md:flex-row justify-between">
         {filtersVisible && (
-          <div className="flex flex-col gap-4 mb-8  w-[300px] p-4">
+          <div className="flex flex-col gap-4 mb-8 md:mr-8 w-full md:w-[300px] p-4 md:block">
             {Object.entries(filterGroups).map(([group, options], index) => (
               <div key={index}>
                 <div
-                  className="flex justify-between items-center cursor-pointer py-2 px-4 border rounded-lg shadow "
+                  className="flex justify-between items-center cursor-pointer py-2 px-4 border rounded-lg shadow"
                   onClick={() => toggleFilter(index)}
                 >
                   <span className="font-bold">{group}</span>
@@ -158,7 +172,10 @@ const Products = () => {
                 {openFilter === index && (
                   <div className="mt-2 px-4">
                     {options.map((option, i) => (
-                      <div key={i} className="py-2 text-sm border-b last:border-none">
+                      <div
+                        key={i}
+                        className="py-2 text-sm border-b last:border-none"
+                      >
                         {option.label}
                       </div>
                     ))}
@@ -170,21 +187,26 @@ const Products = () => {
         )}
 
         <div
-          className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 flex-grow gap-6 my-4 ${
+          className={`grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 flex-grow gap-6 my-4 ${
             filtersVisible ? '' : 'justify-center'
           }`}
         >
           {filteredProducts.map((product) => (
-            <div key={product.id} className="rounded-lg relative h-[399px]">
+            <div
+              key={product.id}
+              className="rounded-lg relative h-auto flex flex-col items-center"
+            >
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full max-w-[300px] h-[300px] object-contain mb-4"
+                className="w-full max-w-[200px] sm:max-w-[150px] h-[250px] object-contain mb-4"
               />
-              <h2 className="text-lg font-bold uppercase text-[#252020]">PRODUCT NAME</h2>
-              <div className="flex justify-between items-center">
-                <button className="text-sm text-[#888792]">
-                  Sign In or create an account see pricing
+              <h2 className="text-lg font-bold uppercase text-[#252020] text-center px-2">
+                {product.title}
+              </h2>
+              <div className="flex justify-between items-center w-full px-2">
+                <button className="text-sm text-[#888792] text-center">
+                  Sign In or create an account to see pricing
                 </button>
                 <CiHeart />
               </div>

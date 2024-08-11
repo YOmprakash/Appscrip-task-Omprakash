@@ -4,7 +4,7 @@ import Products from '../components/Products'
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className='min-h-screen'>
       <Navbar />
       <div className=" flex justify-center items-center flex-col text-center mt-10">
             <p
