@@ -1,3 +1,4 @@
+import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Products from '../components/Products'
 
@@ -15,7 +16,7 @@ const LandingPage = () => {
             </p>
             <p
               
-              className="max-w-[600px] text-center text-lg text-[20px] leading-10 !text-[#252020] font-normal mt-4 "
+              className="max-w-[600px] text-center text-lg text-[20px] leading-8 !text-[#252020] font-normal mt-4 "
             >
               Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus
               scelerisque. Dolor integer scelerisque nibh amet mi ut elementum
@@ -23,6 +24,7 @@ const LandingPage = () => {
             </p>
           </div>
           <Products/>
+          <Footer/>
     </div>
   )
 }

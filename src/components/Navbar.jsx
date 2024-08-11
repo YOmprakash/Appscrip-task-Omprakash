@@ -1,7 +1,15 @@
 // src/Navbar.js
 import { useState } from "react";
 import logo from "../assets/logo.svg";
-import { FaSearch, FaHeart, FaUser, FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaSearch,
+  FaHeart,
+  FaCartPlus,
+  FaUser,
+  FaBars,
+  FaTimes,
+  FaArrowCircleDown,
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +19,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="p-4 bg-white border-b border-solid border-gray-300">
-      <div className="container mx-auto flex flex-col justify-center items-center">
-        <div className="flex items-center justify-between w-full md:w-[90%]">
+    <nav className="p-4 bg-white border-b border-solid border-gray-300 mx-auto container">
+      <div className="flex flex-col justify-center items-center">
+        <div className="flex items-center justify-between w-full md:w-[90%] mx-auto">
           {/* Left: Logo */}
           <div className="flex items-center">
             <button className="md:hidden mr-2" onClick={toggleSidebar}>
@@ -21,13 +29,13 @@ const Navbar = () => {
             </button>
             <img src={logo} alt="Logo" className="h-8 w-8 mr-2" />
           </div>
-
-          <h1 className="text-center text-2xl md:text-4xl text-black font-[900] font-[Inter] ">
-            LOGO
-          </h1>
+          
+            <h1 className=" text-2xl md:text-4xl text-black font-[900] font-[Inter] ">
+              LOGO
+            </h1>
 
           {/* Right: Navigation Items */}
-          <div className="flex items-center space-x-4 text-black">
+          <div className="flex items-center space-x-4 text-[#292D32]">
             <button className="hover:text-gray-300 flex items-center">
               <FaSearch className="mr-1" />
             </button>
@@ -35,16 +43,20 @@ const Navbar = () => {
               <FaHeart className="mr-1" />
             </button>
             <button className="hover:text-gray-300 flex items-center">
+              <FaCartPlus className="mr-1" />
+            </button>
+            <button className="hover:text-gray-300 flex items-center">
               <FaUser className="mr-1" />
             </button>
             <button className="hover:text-gray-300 items-center hidden md:flex">
               ENG
+              <FaArrowCircleDown />
             </button>
           </div>
         </div>
 
         {/* Desktop Navigation Links */}
-        <ul className="hidden md:flex flex-wrap gap-[100px] mt-8 font-bold text-[20px] font-[Inter]">
+        <ul className="hidden md:flex gap-[64px]  mt-8 font-bold text-[#252020] text-[20px] font-[Inter]">
           <li className="hover:text-gray-500">SHOP</li>
           <li className="hover:text-gray-500">SKILLS</li>
           <li className="hover:text-gray-500">STORIES</li>
@@ -60,7 +72,6 @@ const Navbar = () => {
         } transition-transform duration-300 ease-in-out md:hidden`}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-300">
-          
           <button onClick={toggleSidebar}>
             <FaTimes className="h-8 w-8" />
           </button>
